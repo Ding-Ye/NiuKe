@@ -16,32 +16,27 @@ public class CheckCompletion {
 		queue.add(root);
 		boolean res = true;
 		boolean isleaf = false;
-		while (!queue.isEmpty()) {// °´²ã±éÀúÀ´½øĞĞ¼ìË÷
+		while (!queue.isEmpty()) {// æŒ‰å±‚éå†æ¥è¿›è¡Œæ£€ç´¢
 			TreeNode cur = queue.poll();
 
-			if (isleaf) {// µ±±êÖ¾ÎªtrueÊ± ´ú±í¿ªÊ¼ÅĞ¶Ïµ±Ç°½ÚµãÊÇ·ñÎªÒ¶×Ó½Úµã
-				if (!(cur.right == null && cur.left == null)) {// ²»ÊÇÒ¶×Ó½Úµã ·µ»Ø
+			if (isleaf) {// å½“æ ‡å¿—ä¸ºtrueæ—¶ ä»£è¡¨å¼€å§‹åˆ¤æ–­å½“å‰èŠ‚ç‚¹æ˜¯å¦ä¸ºå¶å­èŠ‚ç‚¹
+				if (!(cur.right == null && cur.left == null)) {// ä¸æ˜¯å¶å­èŠ‚ç‚¹ è¿”å›
 																// false
 					res = false;
 					break;
 				}
 			}
 
-			if (cur.right != null && cur.left == null) {// ÓĞÓÒº¢×ÓÃ»×óº¢×Ó ²»·ûºÏÍêÈ«¶ş²æÊ÷¶¨Òå
-														// ·µ»Øfalse
+			if (cur.right != null && cur.left == null) {// æœ‰å³å­©å­æ²¡å·¦å­©å­ ä¸ç¬¦åˆå®Œå…¨äºŒå‰æ ‘å®šä¹‰
+														// è¿”å›false
 				res = false;
 				break;
 			} else if (cur.right != null && cur.left != null) {
 				queue.add(cur.left);
 				queue.add(cur.right);
-			} else {// µ±²»Í¬Ê±´æÔÚ×óÓÒº¢×ÓÊ± ´ËÊ±¾ÍÒªÇó´Ë½ÚµãÒÔºóµÄ½Úµã¶¼ÒªÊÇÒ¶×Ó½Úµã
+			} else {// å½“ä¸åŒæ—¶å­˜åœ¨å·¦å³å­©å­æ—¶ æ­¤æ—¶å°±è¦æ±‚æ­¤èŠ‚ç‚¹ä»¥åçš„èŠ‚ç‚¹éƒ½è¦æ˜¯å¶å­èŠ‚ç‚¹
 				isleaf = true;
-				if (cur.left != null) {
-					queue.add(cur.left);
-				}
-				if (cur.right != null) {
-					queue.add(cur.right);
-				}
+				//è¿™ä¸ªåœ°æ–¹åˆ¤æ–­cur.right == nullå¥½åƒæ˜¯å¤šä½™çš„
 			}
 
 		}
